@@ -1,0 +1,49 @@
+﻿@model IdentitySecuredApp.Models.LoginViewModel
+
+@{ ViewData["Title"] = "Login"; }
+
+<div class="bg-dark" style="margin-top: 3.6%; height: 100%; padding-top: 35px; width: 40%; position:absolute; z-index: 1; top: 0; left: 0; ">
+    <div style="margin-top: 20%; padding: 60px; color: #fff;">
+        <h1>Digital Retailer </h1><h3> Login Page</h3>
+        <p>Login or register from here to access.</p>
+    </div>
+</div>
+<div style="margin-left: 40%; padding: 0px 10px;">
+    <div class="col-md-6 col-sm-12">
+        <div style="margin-top: 30%;">
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" placeholder="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-secondary">
+                </div>
+                <div>
+                    <u><a asp-action="Register" asp-controller="Accounts" style="color:black"> Don't Have An Account? Register here</a></u>
+                </div>
+                <a asp-controller="Seller" asp-action="Login"> Seller Login </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@ViewBag.msg
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
